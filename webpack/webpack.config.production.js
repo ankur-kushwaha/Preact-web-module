@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const config = require("./webpack.config.base");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const GLOBALS = {
   "process.env": {
@@ -37,6 +38,7 @@ module.exports = merge(config, {
     // Avoid publishing files when compilation fails
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin(GLOBALS),
+    // new BundleAnalyzerPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false,
