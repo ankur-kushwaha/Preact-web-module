@@ -12,16 +12,14 @@ const GLOBALS = {
 module.exports = merge(config, {
   devtool: "source-map",
   entry: {
-    application: [
+    vendor:[
       "webpack-hot-middleware/client",
-      "babel-polyfill",
-      "client/js/index"
-    ],
-    vendor: [
-      "bootstrap",
       "@webcomponents/webcomponentsjs/custom-elements-es5-adapter",
-      "@webcomponents/webcomponentsjs/webcomponents-loader",
-      "web-component"
+      "web-component",
+      'client/js/loadScripts'
+    ],
+    application: [
+      "client/js/index"
     ]
   },
   plugins: [

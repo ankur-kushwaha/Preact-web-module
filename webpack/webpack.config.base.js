@@ -6,6 +6,7 @@ const autoprefixer = require("autoprefixer");
 const e2c = require("electron-to-chromium");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const postcssLoaderOptions = {
   plugins: [
@@ -17,7 +18,7 @@ const postcssLoaderOptions = {
 
 module.exports = {
   output: {
-    filename: "js/[name].[chunkhash].js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "../build"),
     publicPath: "/"
   },
@@ -39,7 +40,7 @@ module.exports = {
     // Shared code
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
-      filename: "js/[name].[hash].js",
+      filename: "js/[name].js",
       minChunks: Infinity
     }),
     new HtmlWebpackPlugin({
@@ -49,7 +50,14 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: "css/[name].[contenthash].css"
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from:"node_modules/@webcomponents/webcomponentsjs/webcomponents-*.js",
+        to: "js",
+        flatten:true
+      }
+    ])
   ],
   module: {
     rules: [

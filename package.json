@@ -12,7 +12,7 @@
     "build:profile": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.production.js --profile --json > profile.json",
     "build:serve": "http-server build/client -p 3003 --cors -o",
     "prestart": "yarn run clean:build",
-    "start": "webpack-dashboard -- node ./bin/server.js",
+    "start": "node ./bin/server.js",
     "test": "cross-env BABEL_ENV=commonjs jest --no-cache --config $(node jest.config.js)",
     "test:cov": "yarn test -- --coverage",
     "test:watch": "yarn test -- --watch",
