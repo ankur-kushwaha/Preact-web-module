@@ -7,7 +7,9 @@ export default class ToggleSwitch extends Component {
   
   constructor(props){
     super(props);
-    this.state={}
+    this.state={
+      checked:props.checked
+    }
   }
   
   dispatchEvent(elem,checked){
