@@ -1,1 +1,1 @@
-export HelloWorld from "./hello-world/HelloWorld";
+export ToggleSwitch from "./toggle-switch/ToggleSwitch";

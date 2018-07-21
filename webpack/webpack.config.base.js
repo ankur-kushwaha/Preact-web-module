@@ -37,12 +37,6 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery"
     }),
-    // Shared code
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      filename: "js/[name].js",
-      minChunks: Infinity
-    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "src/client/index.html",
@@ -50,14 +44,7 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: "css/[name].[contenthash].css"
-    }),
-    new CopyWebpackPlugin([
-      {
-        from:"node_modules/@webcomponents/webcomponentsjs/webcomponents-*.js",
-        to: "js",
-        flatten:true
-      }
-    ])
+    })
   ],
   module: {
     rules: [
@@ -106,14 +93,16 @@ module.exports = {
       // Application-wide styles
       {
         test: /\.scss$/,
-        include: [path.resolve(__dirname, "../src/client/assets/styles")],
+        include: [path.resolve(__dirname, "../src/assets/styles"),path.resolve(__dirname, "../src/client/js/components")],
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
             {
               loader: "css-loader",
               options: {
-                sourceMap: true
+                sourceMap: true,
+                modules:true,
+                localIdentName:"[local]__[hash:base64:5]"
               }
             },
             {
@@ -128,26 +117,6 @@ module.exports = {
             }
           ]
         })
-      },
-      // Component-scoped styles
-      {
-        test: /\.scss$/,
-        include: [path.resolve(__dirname, "../src/client/js")],
-        use: [
-          {
-            loader: "raw-loader"
-          },
-          {
-            loader: "postcss-loader",
-            options: postcssLoaderOptions
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              outputStyle: "compressed"
-            }
-          }
-        ]
       }
     ]
   }

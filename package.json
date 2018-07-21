@@ -1,12 +1,12 @@
 {
-  "name": "web-components-webpack-es6-boilerplate",
+  "name": "preact-web-module",
   "version": "1.0.0",
-  "description": "Web Components project starter using ES6 and Webpack",
+  "description": "Sample project for preact web module",
   "main": "index.js",
   "scripts": {
     "clean:build": "rimraf build",
     "prebuild": "yarn run clean:build",
-    "build": "yarn run build:client && yarn run build:server",
+    "build": "yarn run build:client",
     "build:client": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.production.js --progress",
     "build:server": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.server.js --progress",
     "build:profile": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.production.js --profile --json > profile.json",
@@ -19,17 +19,24 @@
     "lint": "eslint config src/** --ext .js",
     "tunnel": "lt --port 3000"
   },
-  "author": {
-    "name": "Rafał Lorenz",
-    "email": "vardius@gmail.com"
+  "repository": {
+    "url": "https://github.com/ankur-kushwaha/Preact-web-module.git"
   },
-  "repository": "https://github.com/vardius/web-components-webpack-es6-boilerplate",
+  "author": {
+    "name": "Ankur Kushwaha",
+    "email": "ankur.kus1@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-react-css-modules": "^3.4.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-polyfill": "6.23.0",
     "babel-runtime": "^6.23.0",
     "cookie-parser": "1.4.3",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "postcss-nested": "^3.0.0",
+    "postcss-scss": "^2.0.0",
+    "preact": "^8.2.9"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^1.0.3",
@@ -50,7 +57,7 @@
     "css-loader": "^0.28.4",
     "document-register-element": "^1.6.0",
     "electron-to-chromium": "^1.3.16",
-    "eslint": "^4.3.0",
+    "eslint": "^4.19.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "font-awesome": "^4.7.0",
@@ -61,17 +68,17 @@
     "jest-cli": "^20.0.4",
     "jquery": "^3.2.1",
     "jsdom": "^11.1.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.2",
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
+    "url-loader": "^1.0.1",
     "web-component": "^1.0.23",
     "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-dashboard": "^0.4.0",
+    "webpack-dashboard": "^2.0.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-merge": "^4.1.0",

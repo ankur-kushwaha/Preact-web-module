@@ -16,11 +16,6 @@ const GLOBALS = {
 module.exports = merge(config, {
   devtool: "nosources-source-map",
   entry: {
-    vendor:[
-      "@webcomponents/webcomponentsjs/custom-elements-es5-adapter",
-      "web-component",
-      'client/js/loadScripts'
-    ],
     application: [
       "client/js/index"
     ]

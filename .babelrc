@@ -9,7 +9,19 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    ["transform-react-jsx", { "pragma":"h" }],
+    ["react-css-modules",{
+      "filetypes": {
+        ".scss": {
+          "syntax": "postcss-scss", 
+          "plugins": [
+            "postcss-nested"
+          ]
+        }
+      },
+      "generateScopedName":"[local]__[hash:base64:5]"
+    }]
   ],
   "env": {
     "test": {
@@ -17,3 +29,4 @@
     }
   }
 }
+ 

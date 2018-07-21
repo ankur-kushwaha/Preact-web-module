@@ -10,11 +10,16 @@
       "experimentalObjectRestSpread": true
     }
   },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
   "env": {
-    "browser": true,     // browser global variables.
-    "node": true,        // Node.js global variables and Node.js-specific rules.
-    "es6": true,         // es6
-    "mocha": true       // adds all of the Mocha testing global variables.
+    "browser": true,   
+    "node": true,      
+    "es6": true,       
+    "mocha": true      
   },
   "globals": {
     "define": true
